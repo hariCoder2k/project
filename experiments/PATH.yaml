@@ -1,0 +1,4 @@
+train_data_dir: /content/drive/MyDrive/data/BraTS_2018/Train
+valid_data_dir: /content/drive/MyDrive/data/BraTS_2018/Valid
+test_data_dir: /content/drive/MyDrive/data/BraTS_2018/Valid
+ckpt_dir: ./ckpts

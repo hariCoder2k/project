@@ -6,7 +6,7 @@ import os
 from sklearn.model_selection import StratifiedKFold, KFold
 import numpy as np
 
-root = '/content/drive/MyDrive/data/BraTS_2018/Train/HGG'
+root = '/content/drive/MyDrive/data/BraTS_2018/Train'
 valid_txt_dir = './content/drive/MyDrive/data/BraTS_2018/Valid'
 valid_data_dir = '/content/drive/MyDrive/data/BraTS_2018/Valid'
 

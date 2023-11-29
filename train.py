@@ -233,7 +233,7 @@ def main():
 
         print ('-----------The %d-th iterations of the Cross-Validation training starts--------\n'% (cv_idx+1))
         if args.dataset == 'BraTSDataset':
-            train_list = os.path.join('./data/MICCAI_BraTS2018_txt/train/', args.train_list[cv_idx])
+            train_list = os.path.join('/content/drive/MyDrive/data/BraTS_2018/Train/', args.train_list[cv_idx])
             train_set = Dataset(train_list, root=args.train_data_dir, for_train=True,
               transforms=args.train_transforms)
 

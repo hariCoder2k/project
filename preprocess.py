@@ -15,12 +15,12 @@ modalities = ('flair', 't1ce', 't1', 't2')
 
 
 train_set = {
-        'root': '/content/drive/MyDrive/data/BraTS_2018/Train/HGG',
+        'root': '/content/drive/MyDrive/data/BraTS_2018/train/HGG',
         'flist': 'all.txt',
         }
 
 valid_set = {
-        'root': "/content/drive/MyDrive/data/BraTS_2018/Valid",
+        'root': "/content/drive/MyDrive/data/BraTS_2018/valid",
         'flist': 'valid.txt',
         }
 
@@ -29,7 +29,7 @@ test_set = {
         'flist': 'test.txt',
         }
 
-pkl_save_path = '/content/drive/MyDrive/data/BraTS_2018/'
+pkl_save_path = '/content/drive/MyDrive/data/BraTS_2018/pkg_files'
 
 
 def nib_load(file_name):

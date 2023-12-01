@@ -192,15 +192,15 @@ def main():
         model = torch.nn.DataParallel(model).cuda()
         optimizer = torch.optim.Adam(model.parameters(), lr=args.lr*args.batch_size, weight_decay=args.weight_decay) # 
         
-        # with open(val_log_savepath,'a') as f:
-        #     f.write('Start time is: %s \n' % (time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
-        #     f.write('---------------------Structure of Network------------------------\n')
-        #     f.write(str(model))
-        #     f.write('\n') 
-        #     f.write('---------------------Setting of the model------------------------\n')
-        #     f.write(str(args))
-        #     f.write('\n') 
-        #     f.write('---------------------------------------------------------------\n')
+        with open(val_log_savepath,'a') as f:
+            f.write('Start time is: %s \n' % (time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())))
+            f.write('---------------------Structure of Network------------------------\n')
+            f.write(str(model))
+            f.write('\n') 
+            f.write('---------------------Setting of the model------------------------\n')
+            f.write(str(args))
+            f.write('\n') 
+            f.write('---------------------------------------------------------------\n')
 
         msg = ' \n'
 
@@ -233,7 +233,7 @@ def main():
 
         print ('-----------The %d-th iterations of the Cross-Validation training starts--------\n'% (cv_idx+1))
         if args.dataset == 'BraTSDataset':
-            train_list = os.path.join('/content/drive/MyDrive/data/BraTS_2018/Train/', args.train_list[cv_idx])
+            train_list = os.path.join('/content/drive/MyDrive/data/BraTS_2018/train/', args.train_list[cv_idx])
             train_set = Dataset(train_list, root=args.train_data_dir, for_train=True,
               transforms=args.train_transforms)
 
@@ -251,7 +251,7 @@ def main():
 
         if args.train_valid_list:
             if args.dataset == 'BraTSDataset':
-                train_valid_list = os.path.join('/content/drive/MyDrive/data/BraTS_2018/Train/', args.train_valid_list[cv_idx])
+                train_valid_list = os.path.join('/content/drive/MyDrive/data/BraTS_2018/train/', args.train_valid_list[cv_idx])
                 train_valid_set = Dataset(train_valid_list,
                                 root=args.train_data_dir,
                                 for_train=False,
@@ -267,7 +267,7 @@ def main():
             valid_loader = train_valid_loader
 
         if args.valid_list and args.dataset == 'BraTSDataset':
-            train_valid_list = os.path.join('/content/drive/MyDrive/data/BraTS_2018/Train/', args.train_valid_list[cv_idx])
+            train_valid_list = os.path.join('/content/drive/MyDrive/data/BraTS_2018/train/', args.train_valid_list[cv_idx])
             valid_list = '/content/drive/MyDrive/data/BraTS_2018/Train/valid.txt'
             test_list = './data/MICCAI_BraTS2018_txt/test/test.txt'
             if args.output_set == 'train_val':

@@ -39,7 +39,7 @@ class BraTSDataset(Dataset):
     def __getitem__(self, index):
         path = self.paths[index].split('/')[-1]
         if self.list_file.split('/')[-2] == 'train':
-            save_path = ".data/BraTS_2018/pkl_file/MICCAI_BraTS2018_TrainingData/"
+            save_path = "/content/drive/MyDrive/data/BraTS_2018/pkg_files/"
         if self.list_file.split('/')[-2] == 'valid':
             save_path = "./data/BraTS_2018/pkl_file/MICCAI_BraTS2018_ValidationData/"
         if self.list_file.split('/')[-2] == 'test':

@@ -54,7 +54,7 @@ parser.add_argument('--num_epochs', default='400', type=float)
 parser.add_argument('--valid_freq', default='5', type=float)
 parser.add_argument('--save_freq', default='20', type=float)
 parser.add_argument('--start_iter', default='0', type=int)
-parser.add_argument('--workers', default=8, type=int)
+parser.add_argument('--workers', default=2, type=int)
 
 parser.add_argument('--output_set', choices=['train_val','val','test'], default='val', type=str) # [train_val,val,test] as output of submission
 parser.add_argument('--batch_size', default=2, type=int, help='Batch size')

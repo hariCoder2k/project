@@ -263,7 +263,8 @@ class disentangle_trainer(nn.Module):
             if self.inChans_list[0] == 2:
                 distill_loss = sum([self.l2_loss(torch.unsqueeze(distill_fea_all[:,i,...],1), j) for i,j in enumerate([distill_fea0,distill_fea1])])/2
             elif self.inChans_list[0] == 4:
-                distill_loss = sum([self.l2_loss(torch.unsqueeze(distill_fea_all[:,i,...],1), j) for i,j in enumerate([distill_fea0,distill_fea1,distill_fea2,distill_fea4])])/4
+                distill_loss = sum([self.l2_loss(torch.unsqueeze(distill_fea_all[:, i, ...].cpu().detach(), 1), j.cpu().detach()) for i, j in enumerate([distill_fea0, distill_fea1, distill_fea2, distill_fea4])]) / 4
+
         else:
             distill_loss = torch.Tensor([0.0]).cuda()
         
@@ -272,9 +273,10 @@ class disentangle_trainer(nn.Module):
             kd_logit_loss = torch.Tensor([0.0]).cuda()
             
             for idx in range(len(distill_main_logit)):
-                kd_logit_loss += sum([self.distill_kl(torch.unsqueeze(distill_main_logit[idx][:,i,...],1), j) for i,j in enumerate([distill_bin_logit1[idx],distill_bin_logit2[idx],distill_bin_logit3[idx],distill_bin_logit4[idx]])]) / 4
+                kd_logit_loss += sum([self.distill_kl(torch.unsqueeze(distill_main_logit[idx][:, i, ...].cpu().detach(), 1), j.cpu().detach()) for i, j in enumerate([distill_bin_logit1[idx], distill_bin_logit2[idx], distill_bin_logit3[idx], distill_bin_logit4[idx]])]) / 4
             kd_logit_loss /= len(distill_main_logit)
-            kd_fea_loss_spatial = sum([self.l2_loss(distill_main_fea[i], distill_bin_fea_total[i], channel_wise=False) for i in range(len(distill_bin_fea1))])
+            kd_fea_loss_spatial = sum([self.l2_loss(distill_main_fea[i].cpu().detach(), distill_bin_fea_total[i].cpu().detach(), channel_wise=False) for i in range(len(distill_bin_fea1))])
+
             
             kd_loss = [kd_logit_loss[0]*self.args.kd_logit_w, kd_fea_loss_spatial]
 

@@ -267,8 +267,8 @@ def main():
             valid_loader = train_valid_loader
 
         if args.valid_list and args.dataset == 'BraTSDataset':
-            train_valid_list = os.path.join('data/BraTS_2018/train/', args.train_valid_list[cv_idx])
-            valid_list = 'data/BraTS_2018/train/valid.txt'
+            train_valid_list = os.path.join('/kaggle/input/data-2/data2/BraTS_2018/train/', args.train_valid_list[cv_idx])
+            valid_list = '/kaggle/input/data-2/data2/train/valid.txt'
             test_list = './data/MICCAI_BraTS2018_txt/test/test.txt'
             if args.output_set == 'train_val':
                 data_list = train_valid_list

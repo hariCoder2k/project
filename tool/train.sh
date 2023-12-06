@@ -1,4 +1,4 @@
-python train.py  --gpu=0 --net=DisenNet --batch_size=1 \
+python train.py  --gpu=0,1,2 --net=DisenNet --batch_size=1 \
     --valid_freq=5 --output_set=train_val \
     --DisenNet_indim=8 --AuxDec_dim=4 \
     --miss_modal=True --use_Bernoulli_train=True \

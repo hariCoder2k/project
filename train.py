@@ -233,7 +233,7 @@ def main():
 
         print ('-----------The %d-th iterations of the Cross-Validation training starts--------\n'% (cv_idx+1))
         if args.dataset == 'BraTSDataset':
-            train_list = os.path.join('/content/drive/MyDrive/data/BraTS_2018/train/', args.train_list[cv_idx])
+            train_list = os.path.join('/kaggle/input/data-2/data2/BraTS_2018/train', args.train_list[cv_idx])
             train_set = Dataset(train_list, root=args.train_data_dir, for_train=True,
               transforms=args.train_transforms)
 
@@ -251,7 +251,7 @@ def main():
 
         if args.train_valid_list:
             if args.dataset == 'BraTSDataset':
-                train_valid_list = os.path.join('/content/drive/MyDrive/data/BraTS_2018/train/', args.train_valid_list[cv_idx])
+                train_valid_list = os.path.join('/kaggle/input/data-2/data2/BraTS_2018/train', args.train_valid_list[cv_idx])
                 train_valid_set = Dataset(train_valid_list,
                                 root=args.train_data_dir,
                                 for_train=False,
@@ -267,8 +267,8 @@ def main():
             valid_loader = train_valid_loader
 
         if args.valid_list and args.dataset == 'BraTSDataset':
-            train_valid_list = os.path.join('/content/drive/MyDrive/data/BraTS_2018/train/', args.train_valid_list[cv_idx])
-            valid_list = '/content/drive/MyDrive/data/BraTS_2018/Train/valid.txt'
+            train_valid_list = os.path.join('data/BraTS_2018/train/', args.train_valid_list[cv_idx])
+            valid_list = 'data/BraTS_2018/train/valid.txt'
             test_list = './data/MICCAI_BraTS2018_txt/test/test.txt'
             if args.output_set == 'train_val':
                 data_list = train_valid_list

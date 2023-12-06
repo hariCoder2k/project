@@ -15,12 +15,12 @@ modalities = ('flair', 't1ce', 't1', 't2')
 
 
 train_set = {
-        'root': '/content/drive/MyDrive/data/BraTS_2018/train/HGG',
-        'flist': 'all.txt',
+        'root': './data2/BraTS_2018/train/LGG',
+        'flist': 'all2.txt',
         }
 
 valid_set = {
-        'root': "/content/drive/MyDrive/data/BraTS_2018/valid",
+        'root': "./data2/BraTS_2018/BraTS_2018/valid",
         'flist': 'valid.txt',
         }
 
@@ -29,7 +29,7 @@ test_set = {
         'flist': 'test.txt',
         }
 
-pkl_save_path = '/content/drive/MyDrive/data/BraTS_2018/pkg_files'
+pkl_save_path = './data2/BraTS_2018/pkg'
 
 
 def nib_load(file_name):
@@ -95,7 +95,9 @@ def doit(dset):
     root = dset['root']
     paths = glob.glob(os.path.join(root, "Brats18*"))
     for path in paths:
-        process_f32(path+'/'+(path.split('/')[-1]))
+        print(path+'/'+(path.split('/')[-1]))
+        break
+        # process_f32(path+'/'+(path.split('/')[-1]))
         #process_f32(root + path.split('/')[-1] + '/' + path.split('/')[-1])
         
 
